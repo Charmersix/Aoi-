@@ -1,4 +1,6 @@
-## AoiAWD环境搭建
+## AoiAWD踩雷指南
+
+### AoiAWD环境搭建
 
 官方其实提提供了构建流程, 但是其搭建过程中的坑网上的处理方式还是很少的, 网上大部分教程也已经很老了, 这里结合本人遇见的问题大体写一下.
 
@@ -90,3 +92,19 @@ npm -v
 接下来就可以按照官方提供的文档进行搭建了
 
 https://github.com/DasSecurity-HatLab/AoiAWD/blob/master/BUILD.md
+
+### 使用方法
+
+我这里有编译完的`phar`和`php.ini`文件, 大家可以按需下载
+
+搭建完后把刚刚那些文件夹中的生成的文件例如xxx.phar等发送到提供给我们的靶机上去，然后记得赋予权限，ip是云服务器ip，端口就是默认8023，如果使用了代理，端口根据设置的端口进行修改
+
+```shell
+chmod +x tapeworm.phar
+chmod +x roundworm
+chmod +x guardian.phar
+./tapeworm.phar -d 目录 -s ip:port #web
+./roundworm  -w 目录 -s ip -p port #系统行为
+./guardian.phar -i 二进制文件 -s ip:port #pwn #本地运行再上传回靶机
+```
+
